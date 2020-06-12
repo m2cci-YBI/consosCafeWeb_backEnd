@@ -40,10 +40,10 @@ public class ConsosCafeWebBackEndApplication implements CommandLineRunner{
 		Consommation c7=new Consommation(1,27);
 		Consommation c8=new Consommation(3,35);
 		
-		Programmeur p1=new Programmeur("youssef","ban",90);
-		Programmeur p2=new Programmeur("luca","van",70);
-		Programmeur p3=new Programmeur("laura","dan",35);
-		Programmeur p4=new Programmeur("chris","jan",56);
+		Programmeur p1=new Programmeur("FAVRE","Jean Marie",412);
+		Programmeur p2=new Programmeur("PARENT","Catherine",201);
+		Programmeur p3=new Programmeur("ENE","Christian",208);
+		Programmeur p4=new Programmeur("WAILLE","Philippe",401);
 		
 		c1.setProgrammeur(p1);
 		c2.setProgrammeur(p1);

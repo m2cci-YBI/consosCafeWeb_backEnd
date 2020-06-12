@@ -7,5 +7,7 @@ import com.example.demo.model.Programmeur;
 
 @Repository
 public interface ProgrammeurRepository extends JpaRepository<Programmeur,Integer> {
-
+  
+	Programmeur findByNomAndPrenom(String nom, String Prenom);
+	
 }

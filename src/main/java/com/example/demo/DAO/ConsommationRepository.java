@@ -10,4 +10,5 @@ public interface ConsommationRepository extends JpaRepository<Consommation, Inte
 
 	List<Consommation> findByNumSemaine(int numSemaine);
 	
+	
 }
