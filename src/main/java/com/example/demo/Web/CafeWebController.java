@@ -69,10 +69,10 @@ public class CafeWebController {
 
 
 /* Test  programmeur{
-"programmeurId": null,
+{"programmeurId": null,
 "nom":"john",
 "prenom":"dani",
-"numbureau":100
+"numbureau":100}
                
 test consommation
 
