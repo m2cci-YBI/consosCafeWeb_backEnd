@@ -1,0 +1,73 @@
+L'utilisation de Sqlite avec hibernate necessite l'ajout de 2 dependences maven .la 1ere conserne le jdbc, la 2nd concerne le dialect afin que hibernate lors de son interaction avec la base de donnée execute des requetes reconnue par Sqlite.
+
+Configuration du test:
+
+fichier:application.properties
+
+server.port=8080
+spring.datasource.driver-class-name=org.sqlite.JDBC
+spring.datasource.url=jdbc:sqlite:C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\Sqlite\Sqlitebd.db
+spring.datasource.username=root
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLiteDialect
+
+fichier:pom.xml
+
+<dependency>
+				<groupId>org.xerial</groupId>
+				<artifactId>sqlite-jdbc</artifactId>
+				<version>3.31.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.gwenn</groupId>
+				<artifactId>sqlite-dialect</artifactId>
+				<version>0.1.0</version>
+			</dependency>
+
+
+Resultat obtenue :
+
+l'application ne fait aucune modification à la base de de donnee qui lui est fournie , mais plutot elle cree une 2 eme bd dans laquelle elle persiste les donnees.
+-en mode create: on a une erreur due l'execution de la requete pour mettre en place les contraintes de la table.(Requete ALTER Table)
+-en mode update l'execute se fait sans erreur , mais on se rend compte que la contrainte foreign Key n'a pas ete executé.
+
+Proposition de solution :la base de donnee en memoire H2 Database fournie par pring boot
+
+dependence pom.xml h2:
+
+
+           <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+Configuration fichier application.properties:
+
+server.port=8080
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.username=root
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+spring.h2.console.enabled=true
+
+
+Resultat:
+
+-le code sql s'execute correctement.
+-pas de configuration particuliere à ajouter
+-Consultation de la base sur le lien http://localhost:8080/h2-console
+-bien evidement c 'est une base de donnee en memoire , les donnees s'effaceront par la suite,on ajoutera un fichier data.sql dans src/main/resources pour initiliser la bd au demarrage.
+
+
+
+
+
+
+
+
