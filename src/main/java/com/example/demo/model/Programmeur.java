@@ -1,36 +1,30 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
+
+
 
 import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
-@Getter
-@Setter
 @Table(name="LesProgrammeurs")
-@NoArgsConstructor@AllArgsConstructor
 public class Programmeur implements Serializable {
 	@Id@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private  Integer programmeurId;
@@ -46,16 +40,83 @@ public class Programmeur implements Serializable {
     
     @OneToMany(mappedBy="programmeur",cascade=CascadeType.ALL)
     @JsonManagedReference //erreur de boucle infine
-    private Set<Consommation> consosCafe=new HashSet<Consommation>();
+    private Collection<Consommation> consosCafe=new HashSet<Consommation>();
     
     
-	public Programmeur(String nom, String prenom, Integer nobureau) {
+	public void setProgrammeurId(Integer programmeurId) {
+		this.programmeurId = programmeurId;
+	}
+
+
+	public Programmeur() {
 		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.numbureau = nobureau;
 		
 	}
+
+
+	public Programmeur(Integer programmeurId,
+			 String nom,
+			 String prenom, Integer numbureau,
+			 Collection<Consommation> consosCafe) {
+		super();
+		this.programmeurId = programmeurId;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numbureau = numbureau;
+		this.consosCafe = consosCafe;
+	}
+
+
+	public Integer getProgrammeurId() {
+		return programmeurId;
+	}
+
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public Integer getNumbureau() {
+		return numbureau;
+	}
+
+
+	public void setNumbureau(Integer numbureau) {
+		this.numbureau = numbureau;
+	}
+
+
+	public Collection<Consommation> getConsosCafe() {
+		return consosCafe;
+	}
+
+
+	public void setConsosCafe(Collection<Consommation> consosCafe) {
+		this.consosCafe = consosCafe;
+	}
+
+
+	
+
+
+	
 
 
 	

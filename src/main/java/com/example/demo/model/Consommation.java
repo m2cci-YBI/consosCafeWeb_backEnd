@@ -19,16 +19,12 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
 @Table(name="LesConsommations",uniqueConstraints=@UniqueConstraint(columnNames= {"numSemaine","programmeur_id"}))
-@Getter
-@Setter
-@NoArgsConstructor@AllArgsConstructor
+
+
 public class Consommation implements Serializable {
     @Id@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer consommationId;
@@ -44,17 +40,73 @@ public class Consommation implements Serializable {
     @JsonBackReference //erreur de boucle infinie
     private Programmeur programmeur;
     
-    
-	public Consommation(int numSemaine, Integer nbTasses) {
+   
+	public Consommation() {
 		super();
+		
+	}
+
+	public Consommation(Integer consommationId,  int numSemaine,
+			 int nbTasses, Programmeur programmeur) {
+		super();
+		this.consommationId = consommationId;
 		this.numSemaine = numSemaine;
+		this.nbTasses = nbTasses;
+		this.programmeur = programmeur;
+	}
+
+
+
+	public int getProgrammeur_Id() {		
+		return programmeur.getProgrammeurId();
+	}
+
+
+
+	public Integer getConsommationId() {
+		return consommationId;
+	}
+
+
+
+	public void setConsommationId(Integer consommationId) {
+		this.consommationId = consommationId;
+	}
+
+
+
+	public int getNumSemaine() {
+		return numSemaine;
+	}
+
+
+
+	public void setNumSemaine(int numSemaine) {
+		this.numSemaine = numSemaine;
+	}
+
+
+
+	public int getNbTasses() {
+		return nbTasses;
+	}
+
+
+
+	public void setNbTasses(int nbTasses) {
 		this.nbTasses = nbTasses;
 	}
 
 
-	
-	public int getProgrammeur_Id() {		
-		return programmeur.getProgrammeurId();
+
+	public Programmeur getProgrammeur() {
+		return programmeur;
+	}
+
+
+
+	public void setProgrammeur(Programmeur programmeur) {
+		this.programmeur = programmeur;
 	}
 
 
