@@ -23,6 +23,10 @@ SpringBoot:
 -Structure du projet:Tous les packages cree doivent etre des sub-packages du package contenant l'annotation @SpringBootApplication
 (Voir explication dans en bas de ce document Section:Erreurs Frequentes)
 
+-Execution de l'application:
+   methode 1 :(usuel) depuis votre IDE
+   methode 2 :(IDE fermé) avec ligne de commande cmd
+               se place dans le repertoire du projet avec la commande cd , puis exeuter la commande mvnw install (si vous etes sur windows) ,un dossier target va etre creer , placez vous dans target avec la commande cd target et executer ce fichier jar avec la commade java -jar nomfichier.jar
 
 Base de donnee :
 
