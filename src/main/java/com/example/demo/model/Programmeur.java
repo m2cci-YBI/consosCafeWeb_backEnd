@@ -9,7 +9,7 @@ import java.util.HashSet;
 import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -38,7 +41,7 @@ public class Programmeur implements Serializable {
 	
     private  Integer numbureau;
     
-    @OneToMany(mappedBy="programmeur",cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="programmeur",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
     @JsonManagedReference //erreur de boucle infine
     private Collection<Consommation> consosCafe=new HashSet<Consommation>();
     

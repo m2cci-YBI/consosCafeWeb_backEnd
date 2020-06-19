@@ -1,3 +1,17 @@
+Explication du probleme:
+-----------------------
+Lors de l'utilisation de hibernate,le developpeur n'ecrit pas de requete SQL pour communiquer avec la base de donnee.C'est Hibernate qui s'en charge .Dependant de quelle base de donnée on utilise; on devera lui definir sa propre configuration de dialect ,cela informera hibernate de quel syntaxe de requete il faudra utiliser pour communiquer avec cette base de donnée en question( Oracle, Postgres, MySQL).Bien sur ils utilisent tous le langage SQL , mais il existe quelque nuance de syntaxe qui seront propre à chaque base.
+
+il est donc necessere de specifier le dialect dans le fichier application.proprietes dans la ligne suivante:
+
+"spring.jpa.properties.hibernate.dialect="
+
+Spring fournie les dependences necessaire pour utiliser les bases MySQL,H2(base en memoire), postgreSQL ... mais pas SQLite , et c'est la le probleme.
+
+Il est donc necessaire de chercher ce dialect ailleurs et l'integrer au projet.
+
+Test Executé:
+-------------
 L'utilisation de Sqlite avec hibernate necessite l'ajout de 2 dependences maven .la 1ere conserne le jdbc, la 2nd concerne le dialect afin que hibernate lors de son interaction avec la base de donnée execute des requetes reconnue par Sqlite.
 
 Configuration du test:
@@ -30,11 +44,11 @@ fichier:pom.xml
 Resultat obtenue :
 
 l'application ne fait aucune modification à la base de de donnee qui lui est fournie , mais plutot elle cree une 2 eme bd dans laquelle elle persiste les donnees.
--en mode create: on a une erreur due l'execution de la requete pour mettre en place les contraintes de la table.(Requete ALTER Table)
+-en mode create: on a une erreur due l'execution de la requete pour mettre en place les contraintes de la table.(Requete ALTER Table) Type de l'erreur: Syntaxe error .
 -en mode update l'execute se fait sans erreur , mais on se rend compte que la contrainte foreign Key n'a pas ete executé.
-
-Proposition de solution :la base de donnee en memoire H2 Database fournie par pring boot
-
+--------------------------------------------------------------
+Proposition de solution 1 :la base de donnee en memoire H2 Database fournie par pring boot 
+-------------------------------------------------------------
 dependence pom.xml h2:
 
 
@@ -63,6 +77,10 @@ Resultat:
 -pas de configuration particuliere à ajouter
 -Consultation de la base sur le lien http://localhost:8080/h2-console
 -bien evidement c 'est une base de donnee en memoire , les donnees s'effaceront par la suite,on ajoutera un fichier data.sql dans src/main/resources pour initiliser la bd au demarrage.
+------------------------------------------------------
+Proposition de solution 2 :la base de donnee Apache Derby Database fournie par springBoot 
+-----------------------------------------------------
+meme principe que H2 , mais ne necessite pas de configuration dans le fichier application.properties.
 
 
 

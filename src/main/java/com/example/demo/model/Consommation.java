@@ -112,10 +112,10 @@ public class Consommation implements Serializable {
 
 
 	
-	/*
+	
 	public String getNomCompletProgrammeur() {
 		return programmeur.getNom() + "  " +programmeur.getPrenom();
-	}*/
+	}
 	
 	
 

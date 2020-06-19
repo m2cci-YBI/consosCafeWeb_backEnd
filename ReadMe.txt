@@ -9,10 +9,10 @@ Dans ce repertoire ,on notera de la configuration et des outils  utilisée dans l
 SpringBoot:
 
 
--Creation de projet SpringBoot:
+-Creation de projet SpringBoot: (Sur Eclipse)
   
    methode 1: Allez sur le Site https://start.spring.io/
-             -Ce site genere des projets Spring boot en fonction       de la configuration et le dependence qu'on lui demande
+             -Ce site genere des projets Spring boot en fonction de la configuration et le dependence qu'on lui demande
 
    Methode 2: A partir d'un projet Maven
              -Creer un projet Maven et ajouter manuellement, les dependences et les annotations de springboot.
@@ -23,10 +23,17 @@ SpringBoot:
 -Structure du projet:Tous les packages cree doivent etre des sub-packages du package contenant l'annotation @SpringBootApplication
 (Voir explication dans en bas de ce document Section:Erreurs Frequentes)
 
+-Configuration de projet SpringBoot:
+la configuration se fait au niveau du fichier application.properties dans le dossier ressource.Pour connaitre quelles sont les possibilités de configuration , allez sur le site https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html .Vous y trouverez egalement la configuration par default
+
 -Execution de l'application:
    methode 1 :(usuel) depuis votre IDE
    methode 2 :(IDE fermé) avec ligne de commande cmd
                se place dans le repertoire du projet avec la commande cd , puis exeuter la commande mvnw install (si vous etes sur windows) ,un dossier target va etre creer , placez vous dans target avec la commande cd target et executer ce fichier jar avec la commade java -jar nomfichier.jar
+
+-Etat de l'application: Spring Boot Actuator 
+
+(En cours de redaction
 
 Base de donnee :
 
@@ -38,9 +45,9 @@ Base de donnee :
  Etape 1: fichier pom.xml
 
  -Supression de la dependence H2 et ajout de la dependence MySQL
-Etape 2: fichier configuration.properties
+Etape 2: fichier application.properties
 
-- Remplacer sonn contenu par la configuration suivante:
+- Remplacer son contenu par la configuration suivante:
 server.port=8080
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/bdtest
@@ -61,10 +68,12 @@ L'api-Rest communique avec le client via les differentes methode HTTP , on utili
 -GET :pour recuperer des donnees
 -Post: pour envoyer des donnees
 -Delete: pour suprimer des donnees
--Update: pour mettre a jour des donnees existante
+-PUT: pour mettre a jour des donnees existante
 
 Etant donnee que la partie client n'est pas encore developpée on aura besoin d'un outil qui joue le role du client et nous qui genere ces differentes requetes HTTP .
 On a testé deux outils : Postman , Insomnia. les deux sont efficaces.Pour la suite on va travailler avec Insomnia.
+
+Pour envoyer des donnees depuis Insomnia ou postman , il est necessaire de configurer sur ces deux outils dans la section "Header" le "Content Type " à la valeur "Application/JSON".
 
 Outils pour faciliter le developement:
 
@@ -89,7 +98,7 @@ click droit sur le projet ----->properties---->Maven-->Changez l'etat de la case
 -Erreur STACKOVERFLOWError :ajouter l'annotation  @JsonManagedReference  dans l'entité pere et @JsonBackReference  dans l'entite fils. 
 
 -Erreur liée à la structure du projet: il faut que tous les package  que l'on souhaite crer soient des fils du package contenant la classe annotée @SpringBootApplication.
-explication: au demarrage de l'application spring scan tout les sub-packages pour voir quels sont les beans qu'il doit instancier et gerer dans son conteneur .Ainsi les packages siblings du package main ne sont pas scanés et par consequent leur objet beans ne seront pas instancier.Cela est le fonctionnement par defaut.Pour Scanner les packages siblinges du package main il va falloir ajouter l'annotation @ComponentScan.
+explication: au demarrage de l'application spring scan tout les sub-packages pour voir quels sont les beans que le conteneur IoC de spring doit instancier et gerer.Ainsi les packages siblings du package main ne sont pas scanés et par consequent leurs objets beans ne seront pas instancier.Cela est le fonctionnement par defaut.Pour Scanner les packages siblinges du package main il va falloir ajouter l'annotation @ComponentScan.
 
 
 
