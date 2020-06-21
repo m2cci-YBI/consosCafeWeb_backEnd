@@ -21,7 +21,7 @@ Dans ce repertoire ,on notera de la configuration et des outils  utilisée dans 
               
 
 -Structure du projet:Tous les packages crées doivent etre des sub-packages du package contenant l'annotation @SpringBootApplication
-(Voir explication dans en bas de ce document Section:Erreurs Frequentes)
+(Voir explication en bas de ce document Section:Erreurs Frequentes)
 
 -Configuration de projet SpringBoot:
 la configuration se fait au niveau du fichier application.properties dans le dossier ressource.Pour connaitre quelles sont les possibilités de configuration , allez sur le site https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html .Vous y trouverez egalement la configuration par default
@@ -61,7 +61,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialec
 
 Remarque:Hibernate cree les colonnes de la table suivant un ordre alphabetique et non pas dans l'ordre que on a mentionné dans la classe.
 
-Test de l'API:
+### Test de l'API:
 
 L'api-Rest communique avec le client via les differentes methode HTTP , on utilisera 4 methodes principalement des ce projets:
 
@@ -85,9 +85,9 @@ exemple .@AllArgsConstructor cree un constructeur avec tout les parametere, @Get
 Remarque: Ajouter lombok necessite ajouter sa dependance dans pom.xml et de l'installer sur la machinedepuis https://projectlombok.org/download 
 (J'ai supprimé ces deux dependance "Lombok" et "DevTools" à partir des commit du 15/06/2020 pour faciliter l'execution de l'application sur d'autes machines)
 
-Erreurs Frequentes:
+### Erreurs Frequentes:
 
-- Serveur already in use .  Explication : c'est une application Jar , du coup l'application possede un embedded tomcat server . A chaque execusion du programme l'application essaye de demarrer une nouvelle instance de tomcat et non pas redemarer l'ancienne instance. Il arrive donc que l'application essaye de demarer une nouvelle instance de tomcat sur le port 8080 alors que l'ancienne instance est encore en cours d'execution sur ce meme port.
+- Serveur already in use .  Explication : c'est une application Jar , du coup l'application possede un embedded tomcat server . A chaque execusion du programme l'application essaye de demarrer une nouvelle instance de tomcat et non pas redemarer l'ancienne instance. Il arrive donc que l'application essaye de demarer une nouvelle instance de tomcat sur le port 8081 alors que l'ancienne instance est encore en cours d'execution sur ce meme port.
 Donc arreter l'ancien serveur avant de reexecuter l application. 
 
 -[WARNING] The requested profile "pom.xml" could not be activated because it does not exist. (cette erreur ce produit souvent apres l'excution de maven clean)
@@ -97,7 +97,7 @@ click droit sur le projet ----->properties---->Maven-->Changez l'etat de la case
 
 -Erreur STACKOVERFLOWError :ajouter l'annotation  @JsonManagedReference  dans l'entité pere et @JsonBackReference  dans l'entite fils. 
 
--Erreur liée à la structure du projet: il faut que tous les package  que l'on souhaite crer soient des fils du package contenant la classe annotée @SpringBootApplication.
+-Erreur liée à la structure du projet: il faut que tous les package  que l'on souhaite creer soient des fils du package contenant la classe annotée @SpringBootApplication.
 explication: au demarrage de l'application spring scan tout les sub-packages pour voir quels sont les beans que le conteneur IoC de spring doit instancier et gerer.Ainsi les packages siblings du package main ne sont pas scanés et par consequent leurs objets beans ne seront pas instancier.Cela est le fonctionnement par defaut.Pour Scanner les packages siblinges du package main il va falloir ajouter l'annotation @ComponentScan.
 
 

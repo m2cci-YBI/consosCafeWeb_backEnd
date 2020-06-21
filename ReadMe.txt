@@ -48,7 +48,7 @@ Base de donnee :
 Etape 2: fichier application.properties
 
 - Remplacer son contenu par la configuration suivante:
-server.port=8080
+server.port=8081
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/bdtest
 spring.datasource.username=root
