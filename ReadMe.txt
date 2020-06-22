@@ -102,6 +102,11 @@ explication: au demarrage de l'application spring scan tout les sub-packages pou
 
 
 
+Authentification:
+https://github.com/jwtk/jjwt
+
+
+
 
 
 
