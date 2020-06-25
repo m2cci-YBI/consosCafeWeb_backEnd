@@ -36,6 +36,10 @@ public class Programmeur implements Serializable {
 	@Size(min = 2,message="nom doit avoir au moins 2 caracteres")
     private  String nom;
 	
+	private String motDePasse;
+	
+	private String roles;
+	
 	@Size(min = 2,message="prenom doit avoir au moins 2 caracteres")	
     private  String prenom;
 	
@@ -59,12 +63,14 @@ public class Programmeur implements Serializable {
 
 	public Programmeur(Integer programmeurId,
 			 String nom,
-			 String prenom, Integer numbureau,
+			 String prenom,String motDePasse,String roles, Integer numbureau,
 			 Collection<Consommation> consosCafe) {
 		super();
 		this.programmeurId = programmeurId;
 		this.nom = nom;
+		this.motDePasse=motDePasse;
 		this.prenom = prenom;
+		this.roles=roles;
 		this.numbureau = numbureau;
 		this.consosCafe = consosCafe;
 	}
@@ -113,6 +119,26 @@ public class Programmeur implements Serializable {
 
 	public void setConsosCafe(Collection<Consommation> consosCafe) {
 		this.consosCafe = consosCafe;
+	}
+
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
+
+	public String getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 

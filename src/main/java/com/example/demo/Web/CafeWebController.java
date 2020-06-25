@@ -7,8 +7,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,21 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.DAO.ConsommationRepository;
 import com.example.demo.DAO.ProgrammeurRepository;
+
+
 import com.example.demo.model.Consommation;
 import com.example.demo.model.Programmeur;
 @RestController
 
 public class CafeWebController {
 	
+	
+	
 	@Autowired
 	private ConsommationRepository consommationRepository;
 	@Autowired
 	private ProgrammeurRepository programmeurRepository;
-	
-	@GetMapping(path="/")
-	public String hello() {
-		return "Bienvenue App Cafe WEB";
-	}
 	
 	//Recuperer les consommations
 	@GetMapping(path="/consommations")

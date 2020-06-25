@@ -1,15 +1,19 @@
 /*la creation des tables et la mise en place des containtes se fera en premier  
-par hibernate se basant sur les annotations qu'on lui a fourni dans le model*/
+*par hibernate se basant sur les annotations qu'on lui a fourni dans le model
+*format des tables:
+*les_programmeurs (programmeur_id , mot_de_passe, nom , numbureau , prenom , roles )
+*les_consommations (consommation_id , nb_tasses, num_semaine , programmeur_id )
+**/
 
-INSERT INTO les_programmeurs VALUES (null,'FAVRE',412,'Jean Marie');
-INSERT INTO les_programmeurs VALUES (null,'PARENT',201,'Catherine');
-INSERT INTO les_programmeurs VALUES (null,'ENE',208,'Christian');
-INSERT INTO les_programmeurs VALUES (null,'WAILLE',401,'Philippe');
-INSERT INTO les_programmeurs VALUES (null,'GENOUD',381,'Philippe');
-INSERT INTO les_programmeurs VALUES (null,'SICARD',404,'Pascal');
-INSERT INTO les_programmeurs VALUES (null,'CAFFIAU',445,'Sybille');
-INSERT INTO les_programmeurs VALUES (null,'CORTES-CORNAX',395,'Mario');
-INSERT INTO les_programmeurs VALUES (null,'GARDNER',446,'Virginia');
+INSERT INTO les_programmeurs VALUES (null,'FAVRE','FAVRE',412,'Jean Marie','PROF');
+INSERT INTO les_programmeurs VALUES (null,'PARENT','PARENT',201,'Catherine','PROF');
+INSERT INTO les_programmeurs VALUES (null,'ENE','ENE',208,'Christian','PROF');
+INSERT INTO les_programmeurs VALUES (null,'WAILLE','WAILLE',401,'Philippe','PROF');
+INSERT INTO les_programmeurs VALUES (null,'GENOUD','GENOUD',381,'Philippe','PROF,RESP');
+INSERT INTO les_programmeurs VALUES (null,'SICARD','SICARD',404,'Pascal','PROF');
+INSERT INTO les_programmeurs VALUES (null,'CAFFIAU','CAFFIAU',445,'Sybille','PROF');
+INSERT INTO les_programmeurs VALUES (null,'CORTES-CORNAX','CORTES-CORNAX',395,'Mario','PROF');
+INSERT INTO les_programmeurs VALUES (null,'GARDNER','GARDNER',446,'Virginia','PROF');
 INSERT INTO les_consommations VALUES (null,9,25,1);
 INSERT INTO les_consommations VALUES (null,7,25,2);
 INSERT INTO les_consommations VALUES (null,9,25,3);
