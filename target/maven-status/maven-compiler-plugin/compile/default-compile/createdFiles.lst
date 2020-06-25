@@ -1,0 +1,15 @@
+com\example\demo\auth\filters\JwtAuthorizationFilter.class
+com\example\demo\auth\MyUserDetailsService.class
+com\example\demo\util\PdfBox.class
+com\example\demo\auth\filters\JwtAuthenticationFilter.class
+com\example\demo\auth\JwtUtil\JwtUtil.class
+com\example\demo\auth\SecurityConfiguration.class
+com\example\demo\auth\SecurityConstants.class
+com\example\demo\auth\MyUserDetails.class
+com\example\demo\ConsosCafeWebBackEndApplication.class
+com\example\demo\model\Programmeur.class
+com\example\demo\DAO\ProgrammeurRepository.class
+com\example\demo\model\Consommation.class
+com\example\demo\Web\CafeWebController.class
+com\example\demo\DAO\ConsommationRepository.class
+com\example\demo\auth\model\AuthenticationRequest.class

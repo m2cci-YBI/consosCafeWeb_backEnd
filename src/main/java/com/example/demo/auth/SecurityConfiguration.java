@@ -20,7 +20,7 @@ import com.example.demo.auth.filters.JwtAuthorizationFilter;
 
 
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
 	private MyUserDetailsService myUserDetailsService;
 	@Override

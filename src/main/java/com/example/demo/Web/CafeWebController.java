@@ -1,11 +1,14 @@
 package com.example.demo.Web;
 
+import java.io.OutputStream;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -22,6 +25,9 @@ import com.example.demo.DAO.ProgrammeurRepository;
 
 import com.example.demo.model.Consommation;
 import com.example.demo.model.Programmeur;
+import com.example.demo.util.PdfBox;
+
+import io.jsonwebtoken.io.IOException;
 @RestController
 
 public class CafeWebController {
@@ -65,6 +71,23 @@ public class CafeWebController {
 		public List<Consommation> listConsoparSem(@PathVariable("num_semaine") int num_semaine){
 		return consommationRepository.findByNumSemaine(num_semaine);
 	}
+	
+	@GetMapping(path="/monPdf")
+	public OutputStream getPdf(HttpServletResponse response) throws IOException, java.io.IOException {
+		
+		response.setContentType("application/pdf");
+		OutputStream out = response.getOutputStream();
+		
+		PDDocument document = new PDDocument();
+        PdfBox monPdfBox= new PdfBox(document);
+        
+        monPdfBox.write();
+        
+        document.save(out);
+ 	    document.close();
+        return out;
+               
+    }
 			
 }
 

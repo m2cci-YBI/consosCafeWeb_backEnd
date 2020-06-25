@@ -1,0 +1,15 @@
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\SecurityConfiguration.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\model\Consommation.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\Web\CafeWebController.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\filters\JwtAuthorizationFilter.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\DAO\ConsommationRepository.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\filters\JwtAuthenticationFilter.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\model\Programmeur.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\DAO\ProgrammeurRepository.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\ConsosCafeWebBackEndApplication.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\util\PdfBox.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\MyUserDetailsService.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\JwtUtil\JwtUtil.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\MyUserDetails.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\model\AuthenticationRequest.java
+C:\Users\YSF\Documents\Projets\TP_Cafe\consosCafeWeb_Spring_vue\consosCafeWeb_backEnd\src\main\java\com\example\demo\auth\SecurityConstants.java
