@@ -48,6 +48,8 @@ la configuration se fait au niveau du fichier application.properties dans le dos
 Etape 2: fichier application.properties
 
 - Remplacer son contenu par la configuration suivante:
+
+```
 server.port=8080
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/bdtest
@@ -57,7 +59,7 @@ spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-
+```
 
 Remarque:Hibernate cree les colonnes de la table suivant un ordre alphabetique et non pas dans l'ordre que on a mentionné dans la classe.
 
