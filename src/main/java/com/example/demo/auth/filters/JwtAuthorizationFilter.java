@@ -42,7 +42,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		response.addHeader("Access-Control-Expose-Headers", "Access-Control-Allow-Origin,Access-Control-Allow-Credentials,Authorization");
 		if(request.getMethod().equals("OPTIONS")){
 			response.setStatus(HttpServletResponse.SC_OK);
-				}else {
+		}else {
 		final String authorizationHeader =request.getHeader("Authorization");		
 		
 		if(authorizationHeader ==null || !authorizationHeader.startsWith("Bearer ")) {

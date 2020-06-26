@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import com.example.demo.DAO.ProgrammeurRepository;
 import com.example.demo.model.Consommation;
 import com.example.demo.model.Programmeur;
 import com.example.demo.util.PdfBox;
+
 
 import io.jsonwebtoken.io.IOException;
 @RestController
@@ -72,16 +74,17 @@ public class CafeWebController {
 		return consommationRepository.findByNumSemaine(num_semaine);
 	}
 	
-	@GetMapping(path="/monPdf")
-	public OutputStream getPdf(HttpServletResponse response) throws IOException, java.io.IOException {
+	@GetMapping(path="/monPdf/{num_semaine}")
+	public OutputStream getPdf(HttpServletResponse response,@PathVariable("num_semaine") int num_semaine) throws IOException, java.io.IOException, COSVisitorException {
 		
+		List<Consommation> consommations= consommationRepository.findByNumSemaine(num_semaine);
 		response.setContentType("application/pdf");
 		OutputStream out = response.getOutputStream();
 		
 		PDDocument document = new PDDocument();
         PdfBox monPdfBox= new PdfBox(document);
         
-        monPdfBox.write();
+        monPdfBox.write(consommations);
         
         document.save(out);
  	    document.close();
