@@ -50,9 +50,13 @@ public class PdfBox {
 			nextx += colWidth;
 		}
 
-		// font de texte
+		// Titre
+		contentStream.setFont(PDType1Font.HELVETICA_BOLD, 14);
+		contentStream.beginText();
+		contentStream.moveTextPositionByAmount(colWidth, y + 2 * rowHeight);
+		contentStream.drawString("Consommations pour la Semaine : " + consommations.get(0).getNumSemaine());
+		contentStream.endText();
 		contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
-
 		// insertion de texte ligne puis colonne
 		float textx = margin + cellMargin;
 		float texty = y - 15;
