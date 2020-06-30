@@ -11,43 +11,40 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.model.Programmeur;
 
-public class MyUserDetails implements UserDetails{
+public class MyUserDetails implements UserDetails {
 
-	
 	private String username;
 	private String password;
 	private List<GrantedAuthority> authorities;
-	
-	
+
 	public MyUserDetails() {
-		
+
 	}
 
 	public MyUserDetails(Programmeur programmeur) {
-	 
-		this.username=programmeur.getNom();
-		this.password=programmeur.getMotDePasse();
-		this.authorities=Arrays.stream(programmeur.getRoles().split(","))
-				               .map(authority -> new SimpleGrantedAuthority(authority))
-				               .collect(Collectors.toList());
-		
+
+		this.username = programmeur.getNom();
+		this.password = programmeur.getMotDePasse();
+		this.authorities = Arrays.stream(programmeur.getRoles().split(","))
+				.map(authority -> new SimpleGrantedAuthority(authority)).collect(Collectors.toList());
+
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
+
 		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		
+
 		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		
+
 		return username;
 	}
 
@@ -74,7 +71,5 @@ public class MyUserDetails implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
-	
 
 }
