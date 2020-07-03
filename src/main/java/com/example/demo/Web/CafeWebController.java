@@ -50,6 +50,7 @@ public class CafeWebController {
 
 		return consommationRepository.save(c);
 	}
+	
 
 	// recuperer les programmeurs
 	@GetMapping(path = "/programmeurs")

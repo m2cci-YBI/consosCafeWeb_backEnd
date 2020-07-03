@@ -2,6 +2,7 @@ package com.example.demo.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -32,7 +33,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.GET,"/programmeurs").hasAuthority("RESP")
+		.antMatchers(HttpMethod.POST,"/programmeurs","/consommations").hasAuthority("RESP")
+	    .antMatchers(HttpMethod.GET,"/consommations/*","/monPdf/*").hasAnyAuthority("RESP","PROF");
 		http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
 		http.addFilterBefore(new JwtAuthorizationFilter(), JwtAuthenticationFilter.class);
 
