@@ -9,11 +9,12 @@ import javax.validation.Valid;
 
 import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +51,6 @@ public class CafeWebController {
 
 		return consommationRepository.save(c);
 	}
-	
 
 	// recuperer les programmeurs
 	@GetMapping(path = "/programmeurs")
@@ -74,6 +74,20 @@ public class CafeWebController {
 	@GetMapping(path = "/consommations/{num_semaine}")
 	public List<Consommation> listConsoparSem(@PathVariable("num_semaine") int num_semaine) {
 		return consommationRepository.findByNumSemaine(num_semaine);
+	}
+
+	// supprimer une consommation
+	@DeleteMapping(path = "/consommations/{id}")
+	public String supprimerConsommation(@PathVariable("id") int idconsommation) {
+		consommationRepository.deleteById(idconsommation);
+		return "Consommation ,id : " + idconsommation + "  supprimé";
+	}
+
+	// supprimer un programmeur
+	@DeleteMapping(path = "/programmeurs/{id}")
+	public String supprimerProgrammeur(@PathVariable("id") int idprogrammeur) {
+		programmeurRepository.deleteById(idprogrammeur);
+		return "Programmeur ,id : " + idprogrammeur + "  supprimé";
 	}
 
 	@GetMapping(path = "/monPdf/{num_semaine}")

@@ -17,16 +17,12 @@ import io.jsonwebtoken.Jwts;
 
 import io.jsonwebtoken.security.Keys;
 
-@Service
 public class JwtUtil {
 
-	private String SECRET_KEY = "dhidushdsihvdnvduhdfgvnbd;vbgo;gdvohdgiodH;OGHdhbgdbdho";
+	private final String SECRET_KEY = "dhidushdsihvdnvduhdfgvnbd;vbgo;gdvohdgiodH;OGHdhbgdbdho";
 
-	public JwtUtil() {
-		super();
-	}
 
-	public Jws<Claims> validateClaims(String token) {
+	public  Jws<Claims> validateClaims(String token) {
 		return Jwts.parser().setSigningKey(Keys.hmacShaKeyFor(SECRET_KEY.getBytes())).parseClaimsJws(token);
 	}
 
