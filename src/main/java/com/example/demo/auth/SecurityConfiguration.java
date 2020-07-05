@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/programmeurs").hasAuthority("RESP")
+		.antMatchers(HttpMethod.DELETE,"/programmeurs").hasAuthority("RESP")
 		.antMatchers(HttpMethod.POST,"/programmeurs","/consommations").hasAuthority("RESP")
 	    .antMatchers(HttpMethod.GET,"/consommations/*","/monPdf/*").hasAnyAuthority("RESP","PROF");
 		http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));

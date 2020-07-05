@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.springframework.security.authentication.AuthenticationManager;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,21 +35,25 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 		AuthenticationRequest authenticationRequest;
 
-		Authentication authentication;
+		Authentication authenticationAv;
+		Authentication authenticationAp;
 
 		try {
-	    // Etape1 :on recupere le username et mot de passe dans l'object
-		// authenticationRequest
+			// Etape1 :on recupere le username et mot de passe dans l'object
+			// authenticationRequest
 			authenticationRequest = new ObjectMapper().readValue(request.getInputStream(), AuthenticationRequest.class);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		// Etape2: on tente de s'identifier avec le username et le
-		// mot de passe
-		authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-				authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+		// Etape2: on fournie le username et password
+		authenticationAv = new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
+				authenticationRequest.getPassword());
 
-		return authentication;
+		// Etape 3:on demande a authenticationManager tente de s'identifier.
+		authenticationAp = authenticationManager.authenticate(authenticationAv);
+
+		// Etape 4 : on retourne l'objet Authentication,
+		return authenticationAp;
 
 	}
 
@@ -58,7 +61,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
 
-		// Authentication reussite, donc on construie le token et on
+		// Si Authentication reussite, on construie le token et on
 		// le met dans le header de la reponse
 
 		response.addHeader("Authorization", "Bearer " + jwtUtil.createToken(authResult));

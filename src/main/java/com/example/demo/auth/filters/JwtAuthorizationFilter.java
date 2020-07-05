@@ -38,16 +38,16 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		final String authorizationHeader = request.getHeader("Authorization");
-
+        //on verifie si la partie front end nous a envoyé le token dans le header
 		if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
 			filterChain.doFilter(request, response);
 			return;
 		}
 
-		String jwt = authorizationHeader.substring(7);// recuperer le token
+		String jwt = authorizationHeader.substring(7);// recuperer le token sans le prefix
 
 		try {
-			Jws<Claims> claims = jwtUtil.validateClaims(jwt); // valider le token grace a la signature
+			Jws<Claims> claims = jwtUtil.validateClaims(jwt); // valider et decoder le token grace a la signature
 			String username = claims.getBody().getSubject();// recuperer le username
 
 			// Recuperer les roles de l'utilisateur
@@ -55,9 +55,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
 			Set<SimpleGrantedAuthority> authorities = Jwtauthorities.stream()
 					.map(m -> new SimpleGrantedAuthority(m.get("authority"))).collect(Collectors.toSet());
-
+			// Creation de l'object authentication et mise dans le contexte de Spring
+			// Security
 			Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authorities);
-
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		} catch (JwtException e) {

@@ -27,7 +27,10 @@ public class JwtUtil {
 	}
 
 	public String createToken(Authentication authResult) {
-		return Jwts.builder().setSubject(authResult.getName()).claim("authorities", authResult.getAuthorities())
+		
+		UserDetails user=(UserDetails) authResult.getPrincipal();
+		
+		return Jwts.builder().setSubject(user.getUsername()).claim("authorities", user.getAuthorities())
 				.setIssuedAt(new Date()).setExpiration(java.sql.Date.valueOf(LocalDate.now().plusWeeks(2)))
 				.signWith(Keys.hmacShaKeyFor(SECRET_KEY.getBytes())).compact();
 	}

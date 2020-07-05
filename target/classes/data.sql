@@ -5,15 +5,15 @@
 *les_consommations (consommation_id , nb_tasses, num_semaine , programmeur_id )
 **/
 
-INSERT INTO les_programmeurs VALUES (null,'FAVRE','FAVRE',412,'Jean Marie','PROF');
-INSERT INTO les_programmeurs VALUES (null,'PARENT','PARENT',201,'Catherine','PROF');
-INSERT INTO les_programmeurs VALUES (null,'ENE','ENE',208,'Christian','PROF');
-INSERT INTO les_programmeurs VALUES (null,'WAILLE','WAILLE',401,'Philippe','PROF');
-INSERT INTO les_programmeurs VALUES (null,'GENOUD','GENOUD',381,'Philippe','PROF,RESP');
-INSERT INTO les_programmeurs VALUES (null,'SICARD','SICARD',404,'Pascal','PROF');
-INSERT INTO les_programmeurs VALUES (null,'CAFFIAU','CAFFIAU',445,'Sybille','PROF');
-INSERT INTO les_programmeurs VALUES (null,'CORTES-CORNAX','CORTES-CORNAX',395,'Mario','PROF');
-INSERT INTO les_programmeurs VALUES (null,'GARDNER','GARDNER',446,'Virginia','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','FAVRE',412,'Jean Marie','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','PARENT',201,'Catherine','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','ENE',208,'Christian','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','WAILLE',401,'Philippe','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','GENOUD',381,'Philippe','PROF,RESP');
+INSERT INTO les_programmeurs VALUES (null,'password','SICARD',404,'Pascal','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','CAFFIAU',445,'Sybille','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','CORTES-CORNAX',395,'Mario','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','GARDNER',446,'Virginia','PROF');
 
 INSERT INTO les_consommations VALUES (null,9,25,1);
 INSERT INTO les_consommations VALUES (null,7,25,2);
