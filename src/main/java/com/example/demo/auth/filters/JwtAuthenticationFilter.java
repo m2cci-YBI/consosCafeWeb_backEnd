@@ -18,7 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.example.demo.auth.JwtUtil.JwtUtil;
 import com.example.demo.auth.model.AuthenticationRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/*Filtre JWT de l'authentification,Son objectif de verifier que le user existe et ensuite 
+ * lui cree un token*/
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	JwtUtil jwtUtil = new JwtUtil();
@@ -45,7 +46,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		// Etape2: on fournie le username et password
+		// Etape2: on fournie le username et password 
 		authenticationAv = new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
 				authenticationRequest.getPassword());
 

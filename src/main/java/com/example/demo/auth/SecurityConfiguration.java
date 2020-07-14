@@ -22,12 +22,13 @@ import com.example.demo.auth.filters.JwtAuthorizationFilter;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
-
+     /*Cette methode permet de customizer le fonctionnment de l'objet AuthenticathionManager */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(myUserDetailsService);
 	}
-
+/*Cette Methode gere les authorizations : les droits d'un utilisateur de recuperer 
+ * une resource depuis le back end*/
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	

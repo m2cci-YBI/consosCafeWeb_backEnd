@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.DAO.ProgrammeurRepository;
 import com.example.demo.model.Programmeur;
-
+/*cette class organise permet d'acceder la base de donnee , puis recuperer les donnees
+ * d'authentification et d'authorisation du username puis les retourner dans l'objet UserDetails*/
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 

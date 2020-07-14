@@ -16,16 +16,17 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 
 import io.jsonwebtoken.security.Keys;
-
+/*Classe qui regroupe des methodes de manipulations du token*/
 public class JwtUtil {
 
 	private final String SECRET_KEY = "dhidushdsihvdnvduhdfgvnbd;vbgo;gdvohdgiodH;OGHdhbgdbdho";
 
-
+     /*cette methode s'assure que la signature du token correspont au header et payload du token,
+      * soit le token n'a pas subit de modification */
 	public  Jws<Claims> validateClaims(String token) {
 		return Jwts.parser().setSigningKey(Keys.hmacShaKeyFor(SECRET_KEY.getBytes())).parseClaimsJws(token);
 	}
-
+    
 	public String createToken(Authentication authResult) {
 		
 		UserDetails user=(UserDetails) authResult.getPrincipal();

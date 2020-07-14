@@ -1,5 +1,6 @@
 package com.example.demo.auth.model;
-
+/*cette classe servira juste a recuperer le username et le password fournir 
+ * par l'utilisateur lors de l'authentification*/
 public class AuthenticationRequest {
 
 	private String Username;

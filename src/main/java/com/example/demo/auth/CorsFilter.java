@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
+/*Cette class implemente un filtre qui permet de resoudre le probleme Cors , quand le navigateur 
+ * envoie des requette OPTIONS avant les requettes que l'on a implementé*/
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {

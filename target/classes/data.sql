@@ -6,7 +6,7 @@
 **/
 
 INSERT INTO les_programmeurs VALUES (null,'password','FAVRE',412,'Jean Marie','PROF');
-INSERT INTO les_programmeurs VALUES (null,'password','PARENT',201,'Catherine','PROF');
+INSERT INTO les_programmeurs VALUES (null,'password','PARENT',201,'Catherine','PROF,RESP');
 INSERT INTO les_programmeurs VALUES (null,'password','ENE',208,'Christian','PROF');
 INSERT INTO les_programmeurs VALUES (null,'password','WAILLE',401,'Philippe','PROF');
 INSERT INTO les_programmeurs VALUES (null,'password','GENOUD',381,'Philippe','PROF,RESP');

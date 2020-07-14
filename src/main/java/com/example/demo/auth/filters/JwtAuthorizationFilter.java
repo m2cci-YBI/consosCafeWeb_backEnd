@@ -28,7 +28,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
-
+/*Filte d'authorization JWT, son objectif est de s'assurer que le header des requete
+ * http contient le token JWT, ensuite s'assurer de sa validite, enfin authentifier le user*/
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
 	private JwtUtil jwtUtil = new JwtUtil();

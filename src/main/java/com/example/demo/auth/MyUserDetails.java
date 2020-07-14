@@ -10,7 +10,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.demo.model.Programmeur;
-
+/*Cette class permet de recuperer les informations d'authentification et d'authorisation
+ * de l'utilisateur qui tente de s'authentifier */
 public class MyUserDetails implements UserDetails {
 
 	private String username;

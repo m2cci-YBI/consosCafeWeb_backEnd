@@ -29,7 +29,7 @@ import com.example.demo.model.Programmeur;
 import com.example.demo.util.PdfBox;
 
 import io.jsonwebtoken.io.IOException;
-
+//API REST
 @RestController
 public class CafeWebController {
 
@@ -89,7 +89,7 @@ public class CafeWebController {
 		programmeurRepository.deleteById(idprogrammeur);
 		return "Programmeur ,id : " + idprogrammeur + "  supprimé";
 	}
-
+    //creer un pdf des consommations pour une semaine donnee
 	@GetMapping(path = "/monPdf/{num_semaine}")
 	public OutputStream getPdf(HttpServletResponse response, @PathVariable("num_semaine") int num_semaine)
 			throws IOException, java.io.IOException, COSVisitorException {
@@ -111,12 +111,4 @@ public class CafeWebController {
 
 }
 
-/*
- * Test programmeur{ {"programmeurId": null, "nom":"john", "prenom":"dani",
- * "numbureau":100}
- * 
- * test consommation
- * 
- * {"numSemaine":9, "nbTasses":25, "conso_Id":null, "programmeur":{
- * "programmeurId": 4 } }}
- */
+
