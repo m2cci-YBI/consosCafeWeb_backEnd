@@ -102,7 +102,7 @@ click droit sur le projet ----->properties---->Maven-->Changez l'etat de la case
 -Erreur liée à la structure du projet: il faut que tous les package  que l'on souhaite creer soient des fils du package contenant la classe annotée @SpringBootApplication.
 explication: au demarrage de l'application spring scan tout les sub-packages pour voir quels sont les beans que le conteneur IoC de spring doit instancier et gerer.Ainsi les packages siblings du package main ne sont pas scanés et par consequent leurs objets beans ne seront pas instancier.Cela est le fonctionnement par defaut.Pour Scanner les packages siblinges du package main il va falloir ajouter l'annotation @ComponentScan.
 
-###Authentification
+### Authentification
 
 Les dependances POM.XML necessairent pour mettre en place l'authetification sont:
 ```
