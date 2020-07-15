@@ -102,4 +102,35 @@ click droit sur le projet ----->properties---->Maven-->Changez l'etat de la case
 -Erreur liée à la structure du projet: il faut que tous les package  que l'on souhaite creer soient des fils du package contenant la classe annotée @SpringBootApplication.
 explication: au demarrage de l'application spring scan tout les sub-packages pour voir quels sont les beans que le conteneur IoC de spring doit instancier et gerer.Ainsi les packages siblings du package main ne sont pas scanés et par consequent leurs objets beans ne seront pas instancier.Cela est le fonctionnement par defaut.Pour Scanner les packages siblinges du package main il va falloir ajouter l'annotation @ComponentScan.
 
+###Authentification
+
+Les dependances POM.XML necessairent pour mettre en place l'authetification sont:
+```
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId> <!-- or jjwt-gson if Gson is preferred -->
+			<version>0.11.2</version>
+			<scope>runtime</scope>
+		</dependency>
+```
+
+Pour une meilleure clarete du code , on a rassembler tout le code d'authetification dans le package auth.
+
+Le path d'authentification utilise n'a pas été definie dans le code ,on a utilisé definie  par defaut par spring ,soit "localhost:8081/login" .
+
 
